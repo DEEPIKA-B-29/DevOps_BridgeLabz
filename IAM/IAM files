@@ -1,1 +1,348 @@
+✅
+Stage 1: Foundations of Ansible 
+�
+�
+Objectives: 
+● Understand configuration management 
+● Install and configure Ansible 
+● Learn inventory and ad-hoc commands 
+�
+�
+Topics: 
+1. What is Ansible? 
+2. Architecture: Control node, managed nodes, SSH, agentless 
+3. Installation and configuration 
+4. Default and custom inventory files 
+5. Ad-hoc commands: ping, copy, command, user, etc. 
+�
+�
+Lab: 
+● Install Ansible on Ubuntu 
+● Create an inventory file with 2 remote EC2 instances 
+● Use ad-hoc commands to: 
+○ Ping nodes 
+○ Create a user 
+○ Copy a file 
+○ Reboot a server 
+�
+�
+Use Case: 
+● Provision a dev environment for 2 developers on new EC2 instances. 
+✅
+Stage 2: Writing Playbooks 
+�
+�
+Objectives: 
+● Understand YAML syntax and playbook structure 
+● Use modules in playbooks 
+�
+�
+Topics: 
+1. Anatomy of a playbook: hosts, tasks, become, vars 
+2. Common modules: file, user, service, package, copy, template 
+3. Handlers and notify 
+�
+�
+Lab: 
+● Write a playbook to: 
+○ Install Apache 
+○ Start the service 
+○ Deploy a static HTML page 
+○ Restart on change using handler 
+�
+�
+Use Case: 
+● Set up a simple web server stack across multiple servers. 
+✅
+Stage 3: Variables, Facts, Conditionals & Loops 
+�
+�
+Objectives: 
+● Use dynamic data, conditional logic, and loops 
+�
+�
+Topics: 
+1. vars, group_vars, host_vars 
+2. Registering variables and facts 
+3. Conditionals using when 
+4. Loops using with_items, loop, with_dict, etc. 
+�
+�
+Lab: 
+● Create a user only if it doesn’t exist 
+● Install packages based on OS type 
+● Loop through a list of users and create them 
+�
+�
+Use Case: 
+● Automate user onboarding on different Linux flavors. 
+✅
+Stage 4: Templates with Jinja2 
+�
+�
+Objectives: 
+● Dynamically generate configuration files 
+�
+�
+Topics: 
+1. Using template module 
+2. Jinja2 expressions and filters 
+3. Embedding variables in templates 
+�
+�
+Lab: 
+● Deploy an Nginx config file using a Jinja2 template 
+● Include server IP and port dynamically 
+�
+�
+Use Case: 
+● Generate different app config files based on environment (dev, prod) 
+✅
+Stage 5: Roles and Ansible Galaxy 
+�
+�
+Objectives: 
+● Reuse and organize code with roles 
+● Use Galaxy roles 
+�
+�
+Topics: 
+1. Role directory structure 
+2. ansible-galaxy init and install 
+3. Role dependencies 
+4. Using roles in playbooks 
+�
+�
+Lab: 
+● Convert Apache playbook to a role 
+● Use a community role (e.g., geerlingguy.nginx) 
+�
+�
+Use Case: 
+● Share web server role across multiple teams. 
+✅
+Stage 6: Tags, Error Handling, and Debugging 
+�
+�
+Objectives: 
+● Run parts of a playbook selectively 
+● Handle failures gracefully 
+�
+�
+Topics: 
+1. tags and --tags, --skip-tags 
+2. block, rescue, always 
+3. debug and assert 
+�
+�
+Lab: 
+● Tag service restart 
+● Use rescue block to roll back package installation failure 
+�
+�
+Use Case: 
+● Safe DB upgrades with rollback. 
+✅
+Stage 7: Ansible Vault and Security 
+�
+�
+Objectives: 
+● Manage sensitive data securely 
+�
+�
+Topics: 
+1. ansible-vault create/edit/view 
+2. Encrypting group_vars, host_vars 
+3. Using vault password file or prompt 
+�
+�
+Lab: 
+● Encrypt database credentials in group_vars 
+● Use in playbook to configure DB connection 
+�
+�
+Use Case: 
+● Secure deployment of credentials for CI/CD secrets. 
+✅
+Stage 8: Dynamic Inventory 
+�
+�
+Objectives: 
+● Work with cloud inventory 
+�
+�
+Topics: 
+1. EC2 dynamic inventory with plugins 
+2. Inventory scripts and cloud-native integrations 
+3. Tag-based targeting 
+�
+�
+Lab: 
+● Use aws_ec2 inventory plugin to fetch EC2 instances 
+● Run playbooks targeting tag_Name_dev_web 
+�
+�
+Use Case: 
+● Scale your app deployment to new EC2s automatically. 
+✅
+Stage 9: Advanced Topics and Real-World Automation 
+�
+�
+Objectives: 
+● Implement real-world automation scenarios 
+�
+�
+Topics: 
+1. Writing custom modules 
+2. Using Ansible with Jenkins 
+3. Callback plugins and logging 
+4. Pull-based architecture with ansible-pull 
+�
+�
+Lab: 
+● Write a Python module like userdata.py 
+● Trigger Ansible playbook from Jenkins 
+● Collect execution logs centrally 
+�
+�
+Use Case: 
+● Full-stack CI/CD pipeline with Jenkins + Ansible. 
+✅
+Stage 10: Ansible Tower / AWX 
+�
+�
+Objectives: 
+● Use GUI, RBAC, Job Templates, and Scheduling 
+�
+�
+Topics: 
+1. Setup of AWX/Tower 
+2. Projects, Inventories, Credentials 
+3. Templates, Surveys, Webhooks 
+�
+�
+Lab: 
+● Set up a Git project, create a job template 
+● Launch job with survey to deploy to dev/staging 
+�
+�
+Use Case: 
+● Enable non-tech stakeholders to trigger infrastructure automation. 
+�
+�
+Bonus: Real-World Project Ideas 
+Project 
+Use Case 
+LAMP Stack Setup 
+Deploy Linux + Apache + MySQL + PHP using roles 
+Docker Host Provisioning Install Docker, create containers for apps 
+Kubernetes Bootstrap 
+CI/CD Pipeline 
+Cloud Provisioning 
+Install kubeadm, kubelet, etc. across cluster nodes 
+Use Ansible + Jenkins to deploy code on merge 
+Provision AWS EC2 + EBS + SG with dynamic inventory 
 
+
+�
+�
+Advanced Hands-On Labs for Ansible (Production 
+Grade) 
+�
+�
+1. Modular Infrastructure Provisioning with Reusable Roles 
+Objective: Build a VPC, public/private subnets, and EC2s across environments. 
+● Create roles: 
+○ vpc, subnet, ec2, security_group 
+● Use dynamic variables and inventory. 
+● Parameterize by environment (dev/stage/prod). 
+● Store secrets in Ansible Vault. 
+● Inventory via amazon.aws.aws_ec2 plugin. 
+✅
+Skills Tested: Reusability, Ansible Vault, Cloud modules, Dynamic inventory 
+�
+�
+2. Multi-Tier App Deployment with Role Dependencies 
+Objective: Deploy a 3-tier architecture (NGINX → Flask/Django → MySQL) using roles. 
+● Role dependencies using meta/main.yml. 
+● Configure backend and DB first, then NGINX. 
+● Ensure idempotency. 
+● Use handlers for service restarts only on change. 
+✅
+Skills Tested: Role dependencies, Order of execution, Handlers 
+�
+�
+3. Application Deployment with CI/CD Pipeline Integration 
+Objective: Integrate an Ansible Playbook with Jenkins pipeline for application deploy. 
+● Setup Jenkinsfile: 
+○ Checkout code 
+○ Run Ansible to deploy containerized app 
+● Trigger based on git push. 
+● Store secrets in Vault and load them via ansible-vault decrypt. 
+✅
+Skills Tested: Jenkins + Ansible integration, CI/CD pipeline automation 
+�
+�
+4. System Hardening via Ansible Roles 
+Objective: Harden Ubuntu 22.04 EC2 instances. 
+● Disable root SSH login. 
+● Enforce password policy and auditd installation. 
+● Configure firewall (ufw/iptables). 
+● Ensure CIS compliance. 
+✅
+Skills Tested: Real-life security use case, Idempotency, Compliance 
+�
+�
+5. GitOps-style Infrastructure Deployment with Dynamic Variables 
+Objective: Use a Git-based configuration to drive infrastructure deployment. 
+● Maintain environment-specific vars in group_vars/ and host_vars/. 
+● Automatically apply changes via webhook. 
+● Allow dry-run/test mode (--check). 
+✅
+Skills Tested: GitOps principles, Dynamic variable usage 
+�
+�
+6. Blue/Green Deployment with Ansible 
+Objective: Perform zero-downtime app deployment. 
+● Deploy new version of app on green instances. 
+● Switch traffic via updated NGINX config. 
+● Rollback on failure. 
+✅
+Skills Tested: Zero-downtime strategy, rollback logic, conditional execution 
+�
+�
+7. Ansible + Prometheus: Monitoring Config Deployment 
+Objective: Use Ansible to deploy and configure Prometheus and node exporters. 
+● Create roles for Prometheus server and exporters. 
+● Use templates for prometheus.yml. 
+● Integrate with Grafana (basic dashboard provisioning via JSON template). 
+✅
+Skills Tested: Monitoring stack deployment, Templates, Multiple hosts config 
+�
+�
+8. Complex Error Handling and Notifications 
+Objective: Run a playbook that handles failure gracefully. 
+● Use block, rescue, always. 
+● Send notification to Slack/MS Teams if any task fails. 
+● Log output to a file. 
+✅
+Skills Tested: Error blocks, real-time notification, resilience 
+�
+�
+9. Infrastructure Drift Detection with Ansible 
+Objective: Use ansible-playbook --check mode and validate changes against live infra. 
+● Compare against live AWS infra using facts. 
+● Auto-remediate if misconfiguration detected. 
+● Tag remediation changes. 
+✅
+Skills Tested: Configuration drift, audit, reporting 
+�
+�
+10. Immutable Deployment with Ansible and Docker 
+Objective: Build and deploy versioned Docker containers via Ansible. 
+● Build Docker image 
+● Push to ECR/Docker Hub 
+● Deploy using docker_container module 
+● Rollback to previous image version 
+✅
+Skills Tested: Docker+Ansible integration, version management 
