@@ -1,348 +1,247 @@
-✅
-Stage 1: Foundations of Ansible 
-�
-�
-Objectives: 
-● Understand configuration management 
-● Install and configure Ansible 
-● Learn inventory and ad-hoc commands 
-�
-�
-Topics: 
-1. What is Ansible? 
-2. Architecture: Control node, managed nodes, SSH, agentless 
-3. Installation and configuration 
-4. Default and custom inventory files 
-5. Ad-hoc commands: ping, copy, command, user, etc. 
-�
-�
-Lab: 
-● Install Ansible on Ubuntu 
-● Create an inventory file with 2 remote EC2 instances 
-● Use ad-hoc commands to: 
-○ Ping nodes 
-○ Create a user 
-○ Copy a file 
-○ Reboot a server 
-�
-�
-Use Case: 
-● Provision a dev environment for 2 developers on new EC2 instances. 
-✅
-Stage 2: Writing Playbooks 
-�
-�
-Objectives: 
-● Understand YAML syntax and playbook structure 
-● Use modules in playbooks 
-�
-�
-Topics: 
-1. Anatomy of a playbook: hosts, tasks, become, vars 
-2. Common modules: file, user, service, package, copy, template 
-3. Handlers and notify 
-�
-�
-Lab: 
-● Write a playbook to: 
-○ Install Apache 
-○ Start the service 
-○ Deploy a static HTML page 
-○ Restart on change using handler 
-�
-�
-Use Case: 
-● Set up a simple web server stack across multiple servers. 
-✅
-Stage 3: Variables, Facts, Conditionals & Loops 
-�
-�
-Objectives: 
-● Use dynamic data, conditional logic, and loops 
-�
-�
-Topics: 
-1. vars, group_vars, host_vars 
-2. Registering variables and facts 
-3. Conditionals using when 
-4. Loops using with_items, loop, with_dict, etc. 
-�
-�
-Lab: 
-● Create a user only if it doesn’t exist 
-● Install packages based on OS type 
-● Loop through a list of users and create them 
-�
-�
-Use Case: 
-● Automate user onboarding on different Linux flavors. 
-✅
-Stage 4: Templates with Jinja2 
-�
-�
-Objectives: 
-● Dynamically generate configuration files 
-�
-�
-Topics: 
-1. Using template module 
-2. Jinja2 expressions and filters 
-3. Embedding variables in templates 
-�
-�
-Lab: 
-● Deploy an Nginx config file using a Jinja2 template 
-● Include server IP and port dynamically 
-�
-�
-Use Case: 
-● Generate different app config files based on environment (dev, prod) 
-✅
-Stage 5: Roles and Ansible Galaxy 
-�
-�
-Objectives: 
-● Reuse and organize code with roles 
-● Use Galaxy roles 
-�
-�
-Topics: 
-1. Role directory structure 
-2. ansible-galaxy init and install 
-3. Role dependencies 
-4. Using roles in playbooks 
-�
-�
-Lab: 
-● Convert Apache playbook to a role 
-● Use a community role (e.g., geerlingguy.nginx) 
-�
-�
-Use Case: 
-● Share web server role across multiple teams. 
-✅
-Stage 6: Tags, Error Handling, and Debugging 
-�
-�
-Objectives: 
-● Run parts of a playbook selectively 
-● Handle failures gracefully 
-�
-�
-Topics: 
-1. tags and --tags, --skip-tags 
-2. block, rescue, always 
-3. debug and assert 
-�
-�
-Lab: 
-● Tag service restart 
-● Use rescue block to roll back package installation failure 
-�
-�
-Use Case: 
-● Safe DB upgrades with rollback. 
-✅
-Stage 7: Ansible Vault and Security 
-�
-�
-Objectives: 
-● Manage sensitive data securely 
-�
-�
-Topics: 
-1. ansible-vault create/edit/view 
-2. Encrypting group_vars, host_vars 
-3. Using vault password file or prompt 
-�
-�
-Lab: 
-● Encrypt database credentials in group_vars 
-● Use in playbook to configure DB connection 
-�
-�
-Use Case: 
-● Secure deployment of credentials for CI/CD secrets. 
-✅
-Stage 8: Dynamic Inventory 
-�
-�
-Objectives: 
-● Work with cloud inventory 
-�
-�
-Topics: 
-1. EC2 dynamic inventory with plugins 
-2. Inventory scripts and cloud-native integrations 
-3. Tag-based targeting 
-�
-�
-Lab: 
-● Use aws_ec2 inventory plugin to fetch EC2 instances 
-● Run playbooks targeting tag_Name_dev_web 
-�
-�
-Use Case: 
-● Scale your app deployment to new EC2s automatically. 
-✅
-Stage 9: Advanced Topics and Real-World Automation 
-�
-�
-Objectives: 
-● Implement real-world automation scenarios 
-�
-�
-Topics: 
-1. Writing custom modules 
-2. Using Ansible with Jenkins 
-3. Callback plugins and logging 
-4. Pull-based architecture with ansible-pull 
-�
-�
-Lab: 
-● Write a Python module like userdata.py 
-● Trigger Ansible playbook from Jenkins 
-● Collect execution logs centrally 
-�
-�
-Use Case: 
-● Full-stack CI/CD pipeline with Jenkins + Ansible. 
-✅
-Stage 10: Ansible Tower / AWX 
-�
-�
-Objectives: 
-● Use GUI, RBAC, Job Templates, and Scheduling 
-�
-�
-Topics: 
-1. Setup of AWX/Tower 
-2. Projects, Inventories, Credentials 
-3. Templates, Surveys, Webhooks 
-�
-�
-Lab: 
-● Set up a Git project, create a job template 
-● Launch job with survey to deploy to dev/staging 
-�
-�
-Use Case: 
-● Enable non-tech stakeholders to trigger infrastructure automation. 
-�
-�
-Bonus: Real-World Project Ideas 
-Project 
-Use Case 
-LAMP Stack Setup 
-Deploy Linux + Apache + MySQL + PHP using roles 
-Docker Host Provisioning Install Docker, create containers for apps 
-Kubernetes Bootstrap 
-CI/CD Pipeline 
-Cloud Provisioning 
-Install kubeadm, kubelet, etc. across cluster nodes 
-Use Ansible + Jenkins to deploy code on merge 
-Provision AWS EC2 + EBS + SG with dynamic inventory 
-
-
-�
-�
-Advanced Hands-On Labs for Ansible (Production 
-Grade) 
-�
-�
-1. Modular Infrastructure Provisioning with Reusable Roles 
-Objective: Build a VPC, public/private subnets, and EC2s across environments. 
-● Create roles: 
-○ vpc, subnet, ec2, security_group 
-● Use dynamic variables and inventory. 
-● Parameterize by environment (dev/stage/prod). 
-● Store secrets in Ansible Vault. 
-● Inventory via amazon.aws.aws_ec2 plugin. 
-✅
-Skills Tested: Reusability, Ansible Vault, Cloud modules, Dynamic inventory 
-�
-�
-2. Multi-Tier App Deployment with Role Dependencies 
-Objective: Deploy a 3-tier architecture (NGINX → Flask/Django → MySQL) using roles. 
-● Role dependencies using meta/main.yml. 
-● Configure backend and DB first, then NGINX. 
-● Ensure idempotency. 
-● Use handlers for service restarts only on change. 
-✅
-Skills Tested: Role dependencies, Order of execution, Handlers 
-�
-�
-3. Application Deployment with CI/CD Pipeline Integration 
-Objective: Integrate an Ansible Playbook with Jenkins pipeline for application deploy. 
-● Setup Jenkinsfile: 
-○ Checkout code 
-○ Run Ansible to deploy containerized app 
-● Trigger based on git push. 
-● Store secrets in Vault and load them via ansible-vault decrypt. 
-✅
-Skills Tested: Jenkins + Ansible integration, CI/CD pipeline automation 
-�
-�
-4. System Hardening via Ansible Roles 
-Objective: Harden Ubuntu 22.04 EC2 instances. 
-● Disable root SSH login. 
-● Enforce password policy and auditd installation. 
-● Configure firewall (ufw/iptables). 
-● Ensure CIS compliance. 
-✅
-Skills Tested: Real-life security use case, Idempotency, Compliance 
-�
-�
-5. GitOps-style Infrastructure Deployment with Dynamic Variables 
-Objective: Use a Git-based configuration to drive infrastructure deployment. 
-● Maintain environment-specific vars in group_vars/ and host_vars/. 
-● Automatically apply changes via webhook. 
-● Allow dry-run/test mode (--check). 
-✅
-Skills Tested: GitOps principles, Dynamic variable usage 
-�
-�
-6. Blue/Green Deployment with Ansible 
-Objective: Perform zero-downtime app deployment. 
-● Deploy new version of app on green instances. 
-● Switch traffic via updated NGINX config. 
-● Rollback on failure. 
-✅
-Skills Tested: Zero-downtime strategy, rollback logic, conditional execution 
-�
-�
-7. Ansible + Prometheus: Monitoring Config Deployment 
-Objective: Use Ansible to deploy and configure Prometheus and node exporters. 
-● Create roles for Prometheus server and exporters. 
-● Use templates for prometheus.yml. 
-● Integrate with Grafana (basic dashboard provisioning via JSON template). 
-✅
-Skills Tested: Monitoring stack deployment, Templates, Multiple hosts config 
-�
-�
-8. Complex Error Handling and Notifications 
-Objective: Run a playbook that handles failure gracefully. 
-● Use block, rescue, always. 
-● Send notification to Slack/MS Teams if any task fails. 
-● Log output to a file. 
-✅
-Skills Tested: Error blocks, real-time notification, resilience 
-�
-�
-9. Infrastructure Drift Detection with Ansible 
-Objective: Use ansible-playbook --check mode and validate changes against live infra. 
-● Compare against live AWS infra using facts. 
-● Auto-remediate if misconfiguration detected. 
-● Tag remediation changes. 
-✅
-Skills Tested: Configuration drift, audit, reporting 
-�
-�
-10. Immutable Deployment with Ansible and Docker 
-Objective: Build and deploy versioned Docker containers via Ansible. 
-● Build Docker image 
-● Push to ECR/Docker Hub 
-● Deploy using docker_container module 
-● Rollback to previous image version 
-✅
-Skills Tested: Docker+Ansible integration, version management 
+Database server configuration 
+1) #sudo apt-get update 
+2) #sudo apt-get install mysql-server 
+3) #sudo mkdir /data && chown mysql.mysql /data 
+4) Edit  /etc/mysql/mysql.conf.d/mysqld.cnf 
+Change bind-address and mysqlx-bind-address  
+bind-address            
+= 127.0.0.1  => change it to 0.0.0.0 
+mysqlx-bind-address     = 127.0.0.1   => change it to 0.0.0.0 
+Change default data directory from /var/lib/mysql to /data 
+datadir = /data 
+5) Stop mysql service and initialize new data directory 
+#sudo systemctl stop mysql.service 
+#sudo mysqld --initialize 
+If system complains permission denied for /data/mysql creation then do below 
+steps  
+a) systemctl stop apparmor.service 
+b) systemctl disable apparmor.service 
+c) sudo aa-complain /usr/sbin/mysqld - put app armour in complain mode for 
+mysqld ( ap-get install apparmor-utils ) 
+6) #sudo systemctl start mysql.service 
+7) #sudo mysql_secure_installation   
+(Get temporary password from /var/log/mysql/error.log) -. Would you like to setup VALIDATE PASSWORD component?Press y|Y for Yes, any other  
+Skipping password set for root as authentication with auth_socket is used by default. 
+If you would like to use password authentication instead, this can be done with the 
+"ALTER_USER" command. 
+See https://dev.mysql.com/doc/refman/8.0/en/alter-user.html#alter-user-password-management 
+for more information. 
+ 
+      - Remove anonymous users? (Press y|Y for Yes, any other key for No) : y 
+Success. 
+ 
+     - Disallow root login remotely? (Press y|Y for Yes, any other key for No) : y 
+Success. 
+ 
+ 
+     - Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y 
+     - Dropping test database... 
+Success. 
+ 
+     - Removing privileges on test database... 
+Success. - Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y 
+Success. 
+ 
+ 
+8) Create application user and grant access to chatappdb - 
+            mysql> create user 'chatapp' identified by 'J.YqwX83zz'; 
+             
+            mysql> create database chatapp; 
+            Query OK, 1 row affected (0.48 sec) 
+             
+            mysql> GRANT ALL privileges ON chatapp.* TO 'chatapp'@'%'; 
+            Query OK, 0 rows affected (0.40 sec) 
+             
+            mysql> FLUSH PRIVILEGES; 
+            Query OK, 0 rows affected (0.00 sec) 
+         Check if able to login this user - 
+               # mysql -u'chatapp' -p'J.YqwX83zz'; 
+ 
+ 
+ 
+9) Make mysql server start automatically post server reboot 
+#sudo systemctl enable mysql.service 
+ 
+10) Login into the backend and check connectivity of database  
+              
+a)  # telnet <db ip> 3306    
+            If its not connecting then whitelist 3306 at database security group - allow connection on 
+3306 from backend server 
+ 
+b)  Test mysql connectivity from backend → 
+  Install mysql-client on backend - 
+        #sudo apt-get update 
+        #sudo apt-get install mysql-client 
+ 
+ #telnet <db ip> 3306 
+                   Trying 10.0.24.201... 
+                   Connected to ChatAppDB. 
+                   Escape character is '^]'. 
+                   [ 
+                   8.0.35-0ubuntu0.22.04.qm4rZK3Ge2tS6caching_sha2_password 
+            
+#mysql -u’chatapp’ -p -h <db ip> 
+ 
+      
+            Backend server configuration 
+ 
+1. Update System & Install Build Dependencies for Python  
+sudo apt update 
+sudo apt install -y software-properties-common build-essential \ 
+                    libssl-dev libffi-dev zlib1g-dev \ 
+                    libbz2-dev libreadline-dev libsqlite3-dev \ 
+                    libmysqlclient-dev default-libmysqlclient-dev 
+sudo apt install pkg-config 
+These are required to build and run Python packages, not to change OS Python. 
+ 
+2. Add Deadsnakes PPA (Safe for Side-by-Side Python) 
+sudo add-apt-repository ppa:deadsnakes/ppa -y 
+sudo apt update 
+This PPA allows multiple Python versions to coexist. 
+ 
+3. Install Python 3.8 (Without Changing Default) 
+sudo apt install -y python3.8 python3.8-venv python3.8-dev 
+Verify: 
+python3.8 --version 
+ 
+4. Clone chatapp source code into the /app  ->  
+ 
+# cd / && sudo git clone 
+https://github.com/Aayush99Sharma/chatapp-modified-ubuntu-22.04.git app 
+ 
+5. Add  application user chatapp to run application with this user 
+ 
+#sudo useradd -m -d /home/chatapp chatapp -s /bin/bash 
+#sudo chown chatapp. -R /app 
+#sudo su - chatapp 
+ 
+6. Create Virtual Environment Using Python 3.8 in your source code directory (/app) 
+  
+ Login as chatapp: sudo su - chatapp 
+ Navigate to source code: cd /app 
+ Create Virtual Env: python3.8 -m venv venv 
+Directory created: /app/venv 
+          It will create venv folder inside /app 
+          # ls -lrt 
+             total 28 -rw-r--r-- 1 root root  271 Jan 24 10:02 appspec.yml -rw-r--r-- 1 root root   25 Jan 24 10:02 README.md 
+drwxr-xr-x 6 root root 4096 Jan 24 10:02 fundoo -rw-r--r-- 1 root root   32 Jan 24 10:02 start.sh 
+drwxr-xr-x 2 root root 4096 Jan 24 10:02 scripts -rw-r--r-- 1 root root  733 Jan 24 10:02 requirements.txt 
+drwxr-xr-x 4 root root 4096 Jan 24 10:09 venv 
+ 
+ 
+7. Activate virtual environment 
+#cd /app && source venv/bin/activate 
+   
+8. Install python modules from requirements.txt file 
+#pip install -r requirements.txt 
+#pip install mysqlclient 
+ 
+ 
+9. Edit  /app/fundoo/fundoo/settings.py —   Instead of hard coding database configuration 
+into the code get values from operating system environment variables  
+ 
+# Database 
+ 
+DATABASES = { 
+… 
+… 
+ 
+ 
+DATABASES = { 
+    'default': { 
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': os.environ.get('CHATDB'), 
+        'USER': os.environ.get('CHATDBUSER'), 
+        'PASSWORD': os.environ.get('CHATDBPASSWORD'), 
+        'HOST': os.environ.get('CHATDBHOST'), 
+        'PORT': '3306', 
+    } 
+} 
+ 
+ 
+10. Put environment in /etc/chatapp/env.conf file: 
+ CHATDB='chatapp' 
+ CHATDBUSER='chatapp' 
+ CHATDBPASSWORD='J.YqwX83zz' 
+ CHATDBHOST=10.0.24.201 
+ 
+Note: Don’t forget to change the ownership of chatapp dir and env.conf to ‘chatapp’ user. 
+ 
+11. Temporarily load the env in the activated Virtual Env using the following commands: 
+ export CHATDB='chatapp' 
+ export CHATDBUSER='chatapp' 
+ export CHATDBPASSWORD='J.YqwX83zz' 
+ export CHATDBHOST=10.0.24.201 
+ 
+12. Create mysql db schema - creates tables into the database 
+#python /app/fundoo/manage.py makemigrations 
+#python /app/fundoo/manage.py migrate 
+ 
+13. Check if app is running from command line 
+#python3 /app/fundoo/manage.py runserver 0.0.0.0:8000 
+And 
+#cd /app/fundoo && /app/venv/bin/gunicorn --bind 0.0.0.0:8000 
+fundoo.wsgi:application  
+ctr+c 
+ 
+14. Now run gunicorn as daemon process using systemctl so it will run indefinitely 
+             
+           #sudo vim /lib/systemd/system/chatapp.service 
+           
+          Add below configuration => 
+          [Unit] 
+          Description=Chatapp Service 
+          After=network.target 
+          [Service] 
+          User=chatapp 
+          Group=chatapp 
+          EnvironmentFile=/etc/chatapp/env.conf 
+          WorkingDirectory=/app/fundoo 
+          ExecStart=/bin/bash -c "cd /app && source venv/bin/activate && cd /app/fundoo &&              
+/app/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:8000 fundoo.wsgi:application" 
+          [Install] 
+          WantedBy=multi-user.target 
+ 
+       
+         #sudo systemctl daemon-reload 
+         #sudo systemctl enable chatapp.service     - to ensure chatapp get started post reboot  
+         #sudo systemctl start chatapp.service 
+ 
+ 
+15. Test application 
+# netstat -taupne | grep LIST 
+# curl http://localhost:8000 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Web server configuration 
+ 
+ 
+ 
+1) Install nginx on frontend server 
+# sudo apt-get update && apt-get install nginx 
+ 
+2) Edit /etc/nginx/sites-available/chatapp.conf 
+ 
+Add below configuration => 
+  
+ server { 
+        listen 80; 
+        server_name _default; 
+location / { 
+include proxy_params; 
+proxy_pass http://<put your backend ip here>:8000; 
+} 
+} 
+3) # cd /etc/nginx/sites-enabled/ 
+# sudo unlink default   => remove default nginx virtualhost conf 
+#sudo  ln -s /etc/nginx/sites-available/chatapp.conf chatapp.conf 
+#sudo systemctl restart nginx 
+#sudo systemctl enable nginx 
+Testing =>  
+# curl http://<backend ip>:8000 
+#curl http://localhost 
